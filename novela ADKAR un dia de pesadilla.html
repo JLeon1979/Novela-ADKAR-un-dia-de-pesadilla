@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>ADKAR:Un día de pesadilla</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
+        body {
+            font-family: 'Special Elite', cursive;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            width: 60%;
+            background: rgb(228, 214, 189);
+            padding: 30px;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        .border-decor {
+            border: 2px solid #000;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.8), 0 0 5px rgba(0, 0, 0, 0.5);
+        }
+        .options {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .option button {
+            background-color: #2C3E50 ;
+            color: rgb(228, 214, 189);
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 5px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .option button:hover {
+            background-color: #0056b3;
+        }
+        .cover {
+            width: 1000px;
+            height: 667px;
+            background-image: url('https://i.imgur.com/P5GpE6E.jpeg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+        .cover-title {
+            font-family: 'Special Elite', cursive;
+            font-size: 52px;
+            margin-bottom: 40px;
+        }
+        .cover-author {
+            font-family: 'Special Elite', cursive;
+            font-size: 24px;
+            margin-top: 20px;
+         }
+        .cover-button {
+            background-color: blue;
+            color: rgb(228, 214, 189);
+            border: none;
+            padding: 10px 20px;
+            font-family: 'Special Elite', cursive;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            margin-bottom: 40px; /* Nuevo margen inferior */
+        }
+        .cover-button:hover {
+            background-color: #0056b3;
+        }
+        .border-pattern {
+            border: 5px solid white;
+            padding: 20px;
+            margin: 20px;
+            position: relative;
+        }
+        .border-pattern:before, .border-pattern:after {
+            content: "";
+            position: absolute;
+            top: -5px;
+            bottom: -5px;
+            left: -5px;
+            right: -5px;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                white 10px,
+                white 20px
+            );
+            z-index: -1;
+        }
+        .border-pattern:before {
+            transform: rotate(45deg);
+        }
+        .border-pattern:after {
+            transform: rotate(-45deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="cover" id="cover">
+            <div class="cover-title">ADKAR:Un día de pesadilla</div>
+            <button class="cover-button" onclick="startNovel()">Entra...si te atreves</button>
+            <div class="cover-author">Autor: Jose Luis León</div>
+        </div>
+        <div class="border-decor" id="content" style="display: none;">
+        <!-- El contenido inicial se cargará aquí -->
+    </div>
+
+    <script>
+        // Contenidos de las páginas
+        const pages = {
+            page1: `
+                <h1>ADKAR:Un día de pesadilla</h1>
+                <p>Un miércoles cualquiera, de una semana cualquiera. Hoy me toca ir a la oficina, a facilitar una sesión con unos equipos, que les está costando adaptarse a las nuevas formas de trabajar. La verdad, no sé cómo saldrá, porque no he dormido nada bien, he tenido un montón de pesadillas raras y no estoy nada fresco... última vez que ceno burritos.</p>
+                <p>Me levanto de la cama con dificultad, sintiendo como si hubiera corrido un maratón en mis sueños. El café de la mañana no logra despejarme por completo, y mientras conduzco hacia la oficina, no puedo evitar pensar en los extraños fragmentos de pesadilla que aún revolotean en mi mente.</p>
+                <p>Al llegar al edificio, noto que el guardia de seguridad me mira de una manera peculiar, como si supiera algo que yo desconozco. Sacudo la cabeza, intentando alejar esa sensación de inquietud. Tengo que concentrarme en la sesión de hoy, en ayudar a estos equipos a adaptarse al cambio utilizando el modelo ADKAR.</p>
+                <p>Mientras camino por el pasillo hacia la sala de reuniones, una pregunta resuena en mi cabeza: ¿Cómo afrontaré este día?</p>
+                <div class="options">
+                    <div class="option">
+                        <button onclick="navigate('page2A')">1. Entrar directamente a la sala de reuniones y comenzar a preparar los materiales para la sesión.</button>
+                    </div>
+                    <div class="option">
+                        <button onclick="navigate('page2B')">2. Pasar primero por tu oficina para repasar tus notas sobre el modelo ADKAR y la dinámica 1-2-4-all.</button>
+                    </div>
+                </div>
+            `,
+            page2A: `
+                <h1>ADKAR:Un día de pesadilla - Página 2A</h1>
+                <p>Decido entrar directamente a la sala de reuniones. "Vamos, esto va a salir bien", pienso mientras giro el pomo de la puerta. Al entrar, me sorprende ver que la sala está completamente a oscuras. Tanteo la pared buscando el interruptor, pero no lo encuentro donde debería estar.</p>
+                <p>De repente, las luces se encienden solas, parpadeando de una manera inquietante que me recuerda a mi pesadilla. Sacudo la cabeza, intentando concentrarme en la tarea que tengo por delante.</p>
+                <p>Empiezo a preparar los materiales para la sesión: rotuladores, post-its, dibujo el tablero para el modelo ADKAR. Mientras coloco todo en su lugar, noto algo extraño en el tablero. Las letras parecen moverse, cambiando de lugar por sí solas.</p>
+                <p>¿Qué decides hacer?</p>
+                <div class="options">
+                    <div class="option">
+                        <button onclick="navigate('page3A')">1. Ignorar las extrañas ocurrencias y comenzar la sesión como estaba planeado, introduciendo el modelo ADKAR.</button>
+                    </div>
+                    <div class="option">
+                        <button onclick="navigate('page3B')">2. Compartir con el grupo que no has dormido bien y proponer un ejercicio de icebreaker antes de empezar para despejar la mente.</button>
+                    </div>
+                </div>
+            `,
+            page2B: `
+                <h1>ADKAR:Un día de pesadilla - Página 2B</h1>
+                <p>Decido pasar primero por mi oficina para repasar mis notas sobre el modelo ADKAR y la dinámica 1-2-4-all. "Mejor estar bien preparado", pienso mientras me dirijo hacia mi escritorio.</p>
+                <p>Al entrar, noto que algo no está bien. Mis papeles, normalmente ordenados, están esparcidos por todo el escritorio. Me acerco y veo que las notas están escritas con una letra que no es la mía. El contenido es correcto, pero la forma... es inquietante.</p>
+                <p>Miro la hoja principal sobre ADKAR y leo:<p>
+                <p>"A - Awareness: El cambio ya está aquí<p>
+                <p>D - Desire: No puedes resistirte<p>
+                <p>K - Knowledge: Sabes más de lo que crees<p>
+                <p>A - Ability: Tienes el poder de verlo<p>
+                <p>R - Reinforcement: Cada pesadilla lo hace más fuerte"<p>
+                <p>Un escalofrío recorre mi espalda. Estas frases... son demasiado similares a fragmentos de mi pesadilla. Miro el reloj: faltan solo cinco minutos para la sesión.<p>
+                <p>De repente, escucho un susurro que parece venir de todas partes: "El cambio no es lo que crees..."<p>
+                <p>¿Qué decides hacer?</p>
+                <div class="options">
+                    <div class="option">
+                        <button onclick="navigate('page3A')">1. Ignorar las extrañas ocurrencias, tomar las notas y dirigirte rápidamente a la sala de reuniones para comenzar la sesión..</button>
+                    </div>
+                    <div class="option">
+                        <button onclick="navigate('page3C')">2. Llamar a tu responsable para explicarle la situación y pedir que alguien más facilite la sesión de hoy..</button>
+                    </div>
+                </div>
+            `,
+            page3A: `
+                <h1>ADKAR:Un día de pesadilla - Página 3A</h1>
+                <p>Decido ignorar las extrañas ocurrencias y comenzar la sesión como estaba planeado. Respiro hondo, forzando una sonrisa mientras los participantes entran en la sala.</p>
+                <p>"Buenos días a todos", saludo con un entusiasmo que no siento realmente. "Hoy vamos a trabajar con el modelo ADKAR para ayudarnos a gestionar el cambio en nuestra organización."</p>
+                <p>Mientras explico los componentes del modelo - Awareness, Desire, Knowledge, Ability, y Reinforcement - noto que las letras en el tablero siguen moviéndose sutilmente. Parpadeo varias veces, tratando de mantener la compostura.</p>
+                <p>"Vamos a utilizar la dinámica 1-2-4-all para explorar cada componente", continúo. "Primero, tendréis un minuto para reflexionar individualmente..."</p>
+                <p>De repente, las luces parpadean intensamente. Por un segundo, veo reflejadas en las ventanas las caras aterradas de mis pesadillas. Cuando vuelvo a mirar, los participantes me observan con expresiones de preocupación.<p>
+                <p>"¿Está todo bien?", pregunta alguien.<p>
+                <p>¿Qué decides hacer?</p>
+                <div class="options">
+                    <div class="option">
+                        <button onclick="navigate('page4A')">1. Admitir que no has dormido bien y proponer un breve descanso para refrescarte.</button>
+                    </div>
+                    <div class="option">
+                        <button onclick="navigate('page4B')">2. Ignorar el incidente y continuar con la dinámica 1-2-4-all como estaba planeado.</button>
+                    </div>
+                </div>
+            `,
+            page3B: `
+                <h1>ADKAR:Un día de pesadilla - Página 3B</h1>
+                <p>"Buenos días a todos", saludo mientras el equipo entra en la sala. "Antes de comenzar, quiero ser honesto con vosotros. No he dormido bien anoche y me siento un poco... desconectado."</p>
+                <p>Veo algunas miradas de comprensión y otras de curiosidad.<p>
+                <p>"Propongo que hagamos un breve icebreaker para despejarnos todos un poco. ¿Qué os parece?"<p>
+                <p>El grupo asiente, algunos con entusiasmo, otros con cierta reserva. Comenzamos con un ejercicio simple de estiramiento y respiración. Mientras guío al grupo, noto que las sombras en la sala parecen moverse de manera antinatural, como en mi pesadilla.<p>
+                <p>Sacudo la cabeza y me concentro en el ejercicio. Al terminar, me siento un poco más centrado, pero la inquietud persiste.<p>
+                <p>"Gracias por vuestra participación", digo. "Ahora, vamos a introduc-"<p>
+                <p>Me interrumpo al ver que uno de los participantes tiene la misma expresión de conocimiento inquietante que el guardia de seguridad esta mañana.<p>
+                <p>¿Qué decides hacer?</p>
+                <div class="options">
+                    <div class="option">
+                        <button onclick="navigate('page4B')">1. Ignorar la extraña sensación y proceder a introducir el modelo ADKAR y la dinámica 1-2-4-all.</button>
+                    </div>
+                    <div class="option">
+                        <button onclick="navigate('page4D')">2. Preguntar al grupo si alguien más está experimentando algo inusual hoy.</button>
+                    </div>
+                </div>
+            `,
+            page3C: `
+                <h1>ADKAR:Un día de pesadilla - Página 3C</h1>
+                <p>Llamo a Eva, mi responsable, que seguro comprenderá mi situación y algún compañero estará disponible para sustituirme.</p>
+                <p>"Hola Eva, ¿qué tal? Oye, ¿tu sabes si alguien ha estado en mi mesa esta mañana? Me he encontrado todo revuelto y unas notas que no son mias"<p>
+                <p>"¡Que va! Si, ayer hicimos teletrabajo y hoy solo estoy yo en la oficina, no ha pasado nadie por aqui"<p>
+                <p>"Pues estoy seguro de que yo no lo dejé asi y aparecen frases muy raras en mis apuntes de la sesión que voy a hacer ahora"<p>
+                <p>"Ya te pasaste anoche otra vez, ¿no?"<p>
+                <p>"No me pasé, pero si comi burritos y la verdad, he dormido fatal ¿podría alguien ayudarme con la facilitación?"<p>
+                <p>"Pues ahora tienen todos otras sesiones, ¿por qué no le planteas a alguien del equipo que la facilite? Asi podrás verlo desde otro punto de vista"<p>
+                <p>¿Qué decides hacer?</p>
+                <div class="options">
+                    <div class="option">
+                        <button onclick="navigate('page3A')">1. Ignorar las extrañas ocurrencias y comenzar la sesión como estaba planeado, introduciendo el modelo ADKAR..</button>
+                    </div>
+                    <div class="option">
+                        <button onclick="navigate('page3B')">2. Compartir con el grupo que no has dormido bien y proponer un ejercicio de icebreaker antes de empezar para despejar la mente.</button>
+                    </div>
+                </div>
+            `,
+            page4A: `
+                <h1>ADKAR:Un día de pesadilla - Página 4A</h1>
+                <p>"La verdad es que no he dormido bien", confieso al grupo. "¿Os importa si tomamos un breve descanso? Creo que nos vendría bien a todos refrescarnos un poco."</p>
+                <p>Los participantes asienten comprensivamente. Mientras salen de la sala, me dirijo al baño para lavarme la cara. El agua fría me despeja momentáneamente, pero al levantar la vista hacia el espejo, veo reflejada la sala de reuniones en lugar de mi rostro.<p>
+                <p>Parpadeo confundido y la imagen normal regresa. Respiro hondo, tratando de calmarme. "Solo es el cansancio", me digo a mí mismo.<p>
+                <p>Al volver a la sala, noto que el ambiente ha cambiado. Los participantes conversan en voz baja, lanzándome miradas de preocupación. Me aclaro la garganta para llamar su atención.<p>
+                <p>"Gracias por vuestra paciencia. Ahora sí, vamos a comenzar con el modelo ADKAR."<p>
+                <p>Mientras explico los componentes, noto que las palabras en el tablero se reordenan por sí solas, formando frases inquietantes: "El cambio ya está aquí", "No puedes escapar".<p>
+                <p>¿Qué decides hacer?</p>
+                <div class="options">
+                    <div class="option">
+                        <button onclick="navigate('page5A')">1. Ignorar las extrañas ocurrencias y proceder con la dinámica 1-2-4-all para el primer componente del ADKAR: Awareness.</button>
+                    </div>
+                    <div class="option">
+                        <button onclick="navigate('page5B')">2. Pedirle a uno de los participantes que tome tu lugar como facilitador mientras tú tomas notas, esperando que el fenómeno cese.</button>
+                    </div>
+                </div>
+            `,
+            page4B: `
+                <h1>ADKAR:Un día de pesadilla - Página 4B</h1>
+                <p>Decido ignorar el incidente y continuar con la dinámica como estaba planeado. "Estoy bien, gracias", respondo con una sonrisa forzada. "Comencemos con la dinámica 1-2-4-all para explorar el primer componente del ADKAR: Awareness."</p>
+                <p>Explico el proceso: un minuto de reflexión individual, dos minutos en parejas, cuatro en grupos de cuatro, y luego compartiremos todos juntos. Mientras los participantes trabajan, noto que las sombras en la sala parecen moverse, formando figuras inquietantes en las paredes.<p>
+                <p>Me froto los ojos, intentando mantener la compostura. Cuando llega el momento de compartir en grupo, cada equipo presenta sus ideas sobre la conciencia del cambio en la organización. Sin embargo, sus palabras suenan distorsionadas a mis oídos, como si estuvieran hablando bajo el agua.<p>
+                <p>De repente, uno de los participantes dice algo que me hiela la sangre: "El cambio ya está aquí, y no puedes escapar de él." Es exactamente lo que decía la sombra en mi pesadilla.<p>
+                <p>El grupo me mira, esperando mi reacción.<p>
+                <p>¿Qué decides hacer?</p>
+                <div class="options">
+                    <div class="option">
+                        <button onclick="navigate('page5C')">1. Preguntar al participante qué quiso decir exactamente con ese comentario, tratando de mantener la calma.</button>
+                    </div>
+                    <div class="option">
+                        <button onclick="navigate('page5D')">2. Proponer un descanso para tomar aire y tratar de recomponerte antes de continuar.</button>
+                    </div>
+                </div>
+            `,
+            page4D: `
+                <h1>ADKAR:Un día de pesadilla - Página 4D</h1>
+                <p>"¿A alguno más de vosotros, le está pasando algo raro hoy?"</p>
+                <p>Escucho murmullos en la sala y a alguien susurrar "si, estar contigo..."<p>
+                <p>Una de las participantes me pregunta directamente: "¿A qué te refieres con algo raro?"<p>
+                <p>Cada vez, las miradas son de más extrañeza y piensas en reconducir la situación aunque el otro participante, sigue con la misma extraña expresión en la cara, que el guardia de seguridad.<p>
+                <p>¿Qué decides hacer?</p>
+                <div class="options">
+                    <div class="option">
+                        <button onclick="navigate('page5A')">1. Ignorar las extrañas ocurrencias y proceder con la dinámica 1-2-4-all para el primer componente del ADKAR: Awareness.</button>
+                    </div>
+                    <div class="option">
+                        <button onclick="navigate('page5B')">2. Pedirle a uno de los participantes que tome tu lugar como facilitador mientras tú tomas notas, esperando que el fenómeno cese.</button>
+                    </div>
+                </div>
+            `,
+            page5A: `
+                <h1>ADKAR:Un día de pesadilla - Página 5A</h1>
+                <p>Decido ignorar las extrañas ocurrencias y proceder con la dinámica 1-2-4-all para el primer componente del ADKAR: Awareness.</p>
+                <p>"Bien, vamos a explorar el concepto de Awareness o Conciencia", anuncio al grupo. "Primero, vamos a tener un minuto para reflexionar individualmente sobre qué significa ser consciente del cambio en nuestra organización."<p>
+                <p>Mientras el grupo reflexiona, las palabras en el tablero siguen reorganizándose, pero me esfuerzo por no prestarles atención. Tras el minuto individual, los participantes forman parejas para compartir sus ideas.<p>
+                <p>Durante la fase de grupos de cuatro, noto que las conversaciones parecen volverse más intensas. Fragmentos de frases llegan a mis oídos: "...como en mis pesadillas...", "...¿lo has notado tú también?...", "...algo no está bien...".<p>
+                <p>Cuando llega el momento de compartir con todo el grupo, una participante levanta la mano. "He notado que todos compartimos una sensación de... inquietud. Como si el cambio del que hablamos fuera más profundo y siniestro de lo que pensábamos."<p>
+                <p>El resto del grupo asiente, mirándome expectantes.<p>
+                <p>¿Qué decides hacer?</p>
+                <div class="options">
+                    <div class="option">
+                        <button onclick="navigate('page6B')">1. Abordar directamente los temores del grupo, relacionándolos con la resistencia al cambio y cómo superarla.</button>
+                    </div>
+                    <div class="option">
+                        <button onclick="navigate('page6A')">2. Intentar redirigir la conversación hacia aspectos más positivos del cambio organizacional.</button>
+                    </div>
+                </div>
+            `,
+            page5B: `
+                <h1>ADKAR:Un día de pesadilla - Página 5B</h1>
+                <p>"Disculpad, ¿Os importaría si uno de vosotros toma el papel de facilitador por un momento?", pregunto al grupo. "Me gustaría tomar algunas notas desde una perspectiva diferente."</p>
+                <p>Una participante, Ana, se ofrece voluntaria. Mientras ella comienza a guiar la dinámica 1-2-4-all para el componente de Awareness, me siento en un rincón de la sala con mi libreta.<p>
+                <p>Observo cómo el grupo discute sobre la conciencia del cambio, pero mis notas comienzan a tomar un giro extraño. Sin darme cuenta, estoy dibujando símbolos que se parecen a los que vi en mi pesadilla.<p>
+                <p>De repente, Ana dice algo que me hace levantar la cabeza de golpe: "El cambio a veces puede sentirse como una pesadilla, ¿no creen? Pero debemos enfrentarlo."<p>
+                <p>Miro a mi alrededor y noto que las expresiones de los participantes han cambiado. Todos parecen compartir una mirada de complicidad, como si supieran algo que yo no.<p>
+                <p>Ana se gira hacia mí. "¿Quieres compartir tus notas con el grupo?"<p>
+                <p>¿Qué decides hacer?</p>
+                <div class="options">
+                    <div class="option">
+                        <button onclick="navigate('page6C')">1. Compartir honestamente tus extrañas notas y sensaciones con el grupo, buscando su apoyo y comprensión.</button>
+                    </div>
+                    <div class="option">
+                        <button onclick="navigate('page6D')">2. Inventar algunas notas genéricas sobre el proceso de cambio para no alarmar al grupo y retomar tu papel de facilitador.</button>
+                    </div>
+                </div>
+            `,
+            page5C: `
+                <h1>ADKAR:Un día de pesadilla - Página 5C</h1>
+                <p>Decido abordar directamente el comentario inquietante. "Interesante observación", digo, tratando de mantener la calma. "¿Podrías explicar un poco más qué quisiste decir con 'El cambio ya está aquí, y no puedes escapar de él'?"<p>
+                <p>El participante, un hombre de mediana edad llamado Carlos, me mira fijamente. Por un momento, sus ojos parecen completamente negros, pero parpadeo y vuelven a la normalidad.<p>
+                <p>"Me refiero a que el cambio es inevitable", responde Carlos. "En nuestra organización, en nuestras vidas... incluso en nuestros sueños. ¿No lo has sentido tú también?"<p>
+                <p>Otros participantes asienten, murmurando en acuerdo. La atmósfera en la sala se vuelve densa, casi opresiva.<p>
+                <p>"Hablemos más sobre eso", sugiero, sintiendo un nudo en el estómago. "¿Cómo se relaciona esta idea con el componente de Awareness en el modelo ADKAR?"<p>
+                <p>Mientras el grupo discute, noto que las palabras en el tablero siguen cambiando, formando frases cada vez más perturbadoras: "El cambio te observa", "No hay despertar".<p>
+                <p>¿Qué decides hacer?</p>
+                <div class="options">
+                    <div class="option">
+                        <button onclick="navigate('page6A')">1. Intentar redirigir la conversación hacia aspectos más positivos del cambio organizacional.</button>
+                    </div>
+                    <div class="option">
+                        <button onclick="navigate('page6B')">2. Profundizar en la conexión entre los temores expresados y la resistencia al cambio en el contexto de ADKAR.</button>
+                    </div>
+                </div>
+            `,
+            page5D: `
+                <h1>ADKAR:Un día de pesadilla - Página 5D</h1>
+                <p>"Creo que todos podríamos beneficiarnos de un breve descanso", anuncio al grupo. "Tomemos diez minutos para refrescarnos y volveremos con energías renovadas."<p>
+                <p>Los participantes salen de la sala, pero noto que algunos me miran con preocupación. Me dirijo al baño, necesitando un momento a solas para recomponerme.<p>
+                <p>Al mirarme en el espejo, veo que mi reflejo parece distorsionado, como si estuviera viendo a través de un cristal ondulado. Cierro los ojos, respirando profundamente.<p>
+                <p>"Puñeteros burritos, no vuelvo a comerlos, estoy teniendo hasta visiones", me digo a mí mismo.<p>
+                <p>Cuando vuelvo a abrir los ojos, mi reflejo es normal, pero detrás de mí, en el espejo, veo la sala de reuniones. Los participantes están allí, escribiendo frenéticamente en el tablero: "ADKAR: Acceptance of Darkness Kills All Reality".<p>
+                <p>"Pero qué..." Me giro bruscamente, pero solo veo la pared del baño. El sudor frío recorre mi espalda mientras regreso a la sala de reuniones.<p>
+                <p>Al entrar, todo parece normal. Los participantes están en sus asientos, esperando para continuar.<p>
+                <p>¿Qué decides hacer?</p>
+                <div class="options">
+                    <div class="option">
+                        <button onclick="navigate('page6E')">1. Retomar la sesión como si nada hubiera pasado, centrándote estrictamente en el modelo ADKAR y la dinámica 1-2-4-all.</button>
+                    </div>
+                    <div class="option">
+                        <button onclick="navigate('page6F')">2. Compartir honestamente con el grupo que no te sientes bien y proponer una actividad de mindfulness para todos antes de continuar.</button>
+                    </div>
+                </div>
+            `,
+            page6A: `
+                <h1>ADKAR:Un día de pesadilla - Página 6A</h1>
+                <p>Decido intentar redirigir la conversación hacia aspectos más positivos del cambio organizacional.<p>
+                <p>"Interesantes perspectivas", digo, forzando una sonrisa. "Ahora, ¿qué os parece si nos enfocamos en los aspectos positivos que el cambio puede traer a nuestra organización?"<p>
+                <p>Mientras hablo, noto que las palabras en el tablero siguen moviéndose, pero me esfuerzo por ignorarlas. "Por ejemplo, ¿cómo podría este cambio mejorar nuestra eficiencia o nuestro ambiente de trabajo?"<p>
+                <p>El grupo se queda en silencio por un momento. Luego, una participante llamada María levanta la mano. "Bueno, supongo que el cambio podría ayudarnos a ser más... adaptables", dice, aunque su tono suena poco convencido.<p>
+                <p>De repente, las luces parpadean y por un instante, veo a todos los participantes con los ojos completamente negros. Parpadeo y todo vuelve a la normalidad.<p>
+                <p>Carlos, el participante que hizo el comentario inquietante antes, habla: "Tal vez el cambio nos haga más fuertes. Como en la evolución: adaptarse o morir."<p>
+                <p>Un murmullo de acuerdo recorre la sala, pero hay algo en el tono que me pone los pelos de punta.<p>
+                <p>¿Qué decides hacer?</p>
+                <div class="options">
+                    <div class="option">
+                        <button onclick="navigate('page8A')">1. Seguir la línea de pensamiento de Carlos, explorando cómo el "adaptarse o morir" se relaciona con el modelo ADKAR.</button>
+                    </div>
+                    <div class="option">
+                        <button onclick="navigate('page9A')">2. Proponer un ejercicio práctico de visualización sobre los beneficios del cambio para alejar la conversación de temas inquietantes.</button>
+                    </div>
+                </div>
+            `,
+            page6B: `
+                <h1>ADKAR:Un día de pesadilla - Página 6B</h1>
+                <p>Decido profundizar en la conexión entre los temores expresados y la resistencia al cambio en el contexto de ADKAR.<p>
+                <p>"Es fascinante cómo nuestros temores pueden manifestarse cuando hablamos de cambio", digo, tratando de mantener un tono profesional. "Vamos a explorar cómo esto se relaciona con el modelo ADKAR, especialmente con la 'A' de Awareness."<p>
+                <p>Mientras hablo, las palabras en el tablero siguen cambiando, formando frases cada vez más perturbadoras: "El cambio te consume", "ADKAR: Aceptar Demonios Kills Almas Resistentes".<p>
+                <p>Ignoro el nudo en mi estómago y continúo: "¿Cómo creeis que estos temores profundos afectan nuestra conciencia del cambio necesario en la organización?"<p>
+                <p>Carlos, el participante que hizo el comentario inquietante, se inclina hacia adelante. Sus ojos parecen más oscuros de lo normal. "Creo que nuestros temores son el cambio", dice con una voz que no parece del todo suya. "La organización está cambiando porque nosotros estamos cambiando. Desde adentro."<p>
+                <p>Otros participantes asienten, sus expresiones una mezcla de miedo y... ¿anticipación?<p>
+                <p>María agrega: "Tal vez la 'R' de Reinforcement en ADKAR no se trata de reforzar el cambio organizacional, sino de reforzar este... cambio interno."<p>
+                <p>El ambiente en la sala se vuelve pesado, casi sofocante.<p>
+                <p>¿Qué decides hacer?</p>
+                <div class="options">
+                    <div class="option">
+                        <button onclick="navigate('page6A')">1. Intentar volver a un enfoque más tradicional de ADKAR, proponiendo un ejercicio estructurado sobre cada componente.</button>
+                    </div>
+                    <div class="option">
+                        <button onclick="navigate('page7A')">2. Seguir esta línea de pensamiento inquietante, explorando cómo cada componente de ADKAR podría relacionarse con este "cambio interno".</button>
+                    </div>
+                </div>
+            `,
+            page6C: `
+                <h1>ADKAR:Un día de pesadilla - Página 6C</h1>
+                <p>Respiro hondo y me levanto lentamente, sintiendo la mirada de todos sobre mí. <p>
+                <p>"De acuerdo," digo, tratando de mantener la voz firme. "Voy a ser honesto con vosotros. Mientras tomaba notas, algo extraño ocurrió."<p>
+                <p>Camino hacia el centro del círculo y muestro mis dibujos. "Estos símbolos empezaron a aparecer en mi libreta. No sé exactamente qué significan, pero me resultan inquietantemente familiares, como los que vi en una pesadilla reciente."<p>
+                <p>El grupo guarda silencio, examinando mis dibujos con curiosidad y preocupación. Ana da un paso adelante, mirándome con empatía. "Gracias por compartir esto con nosotros," dice suavemente.<p>
+                <p>"El cambio puede ser realmente desconcertante, y a veces, enfrentamos nuestros miedos más profundos en el proceso. ¿Alguien más ha tenido experiencias similares?"<p>
+                <p>Uno a uno, los participantes comienzan a compartir sus propias historias y sensaciones, creando un ambiente de apoyo y comprensión mutua.<p>
+                <p>A medida que las voces se entrelazan, siento una conexión más profunda con el grupo, una sensación de que estamos todos juntos en este viaje de cambio.<p>
+                <p>¿Qué decides hacer?</p>
+                <div class="options">
+                    <div class="option">
+                        <button onclick="navigate('page6A')">1. Intentar volver a un enfoque más tradicional de ADKAR, proponiendo un ejercicio estructurado sobre cada componente.</button>
+                    </div>
+                    <div class="option">
+                        <button onclick="navigate('page7A')">2. Seguir esta línea de pensamiento inquietante, explorando cómo cada componente de ADKAR podría relacionarse con este "cambio interno".</button>
+                    </div>
+                </div>
+            `,
+            page6D: `
+                <h1>ADKAR:Un día de pesadilla - Página 6D</h1>
+                <p>Forzando una sonrisa, cierro mi libreta y me pongo de pie. "Claro, Ana. Aquí están algunas de mis observaciones." <p>
+                <p>Camino hacia el frente del grupo, tratando de no mostrar mi nerviosismo. "He notado que el cambio puede ser visto de diversas maneras," empiezo, improvisando.<p>
+                <p>"Para algunos, es una oportunidad para crecer y aprender. Para otros, puede ser una fuente de ansiedad e incertidumbre. Lo importante es que estamos aquí para apoyarnos mutuamente en este proceso."<p>
+                <p>Los participantes asienten, algunos tomando notas, otros reflexionando sobre mis palabras. Ana sonríe, pareciendo satisfecha con mi respuesta. "Gracias por compartir," dice. "¿Alguien tiene algo que agregar?"<p>
+                <p>A medida que la discusión continúa, me esfuerzo por mantener la atención en los temas generales, evitando cualquier mención de mis extraños dibujos. Poco a poco, el grupo vuelve a enfocarse en el proceso de cambio y las estrategias para enfrentarlo, y la inquietud que sentía comienza a disiparse.<p>
+                <p>Sin embargo, en el fondo de mi mente, los símbolos y la sensación de inquietud permanecen, recordándome que, a veces, el cambio puede traer consigo más de lo que podemos prever.<p>
+                <p>¿Qué decides hacer?</p>
+                <div class="options">
+                    <div class="option">
+                        <button onclick="navigate('page6A')">1. Intentar volver a un enfoque más tradicional de ADKAR, proponiendo un ejercicio estructurado sobre cada componente.</button>
+                    </div>
+                    <div class="option">
+                        <button onclick="navigate('page7A')">2. Seguir esta línea de pensamiento inquietante, explorando cómo cada componente de ADKAR podría relacionarse con este "cambio interno".</button>
+                    </div>
+                </div>
+            `,
+            page6E: `
+                <h1>ADKAR:Un día de pesadilla - Página 6E</h1>
+                <p>Decido retomar la sesión como si nada hubiera pasado, centrándome estrictamente en el modelo ADKAR y la dinámica 1-2-4-all. Respiro hondo y me dirijo al grupo con la mayor normalidad posible.<p>
+                <p>"Bien, volvamos a nuestro tema. Estamos explorando el modelo ADKAR para la gestión del cambio. Comencemos con la 'A' de Awareness o Conciencia."<p>
+                <p>Mientras hablo, noto que las letras en el tablero parecen vibrar ligeramente, pero me esfuerzo por ignorarlo. "Vamos a utilizar la dinámica 1-2-4-all para explorar este concepto. Primero, tendremos un minuto para reflexionar individualmente sobre qué significa ser consciente del cambio en nuestra organización."<p>
+                <p>El grupo se sumerge en la reflexión. Observo cómo algunos participantes escriben frenéticamente, mientras otros miran al vacío con expresiones extrañas. Cuando llegamos a la fase de compartir en parejas, escucho fragmentos de conversaciones que me inquietan: "...como en mis pesadillas...", "...el cambio ya está dentro..."<p>
+                <p>Durante la fase de grupos de cuatro, las discusiones se vuelven más intensas. Veo a Carlos, el participante que hizo el comentario inquietante antes, gesticulando animadamente en su grupo.<p>
+                <p>Finalmente, llega el momento de compartir con todo el grupo. Carlos levanta la mano: "Hemos concluido que la conciencia del cambio es como despertar de un sueño, solo para darte cuenta de que sigues soñando. La organización, nosotros... todo está cambiando de formas que no podemos controlar."<p>
+                <p>El resto del grupo asiente, mirándome con una mezcla de expectación y... ¿complicidad?<p>
+                <p>¿Qué decides hacer?</p>
+                <div class="options">
+                    <div class="option">
+                        <button onclick="navigate('page6A')">1. Intentar reconducir la conversación hacia aspectos más concretos y prácticos de la gestión del cambio organizacional.</button>
+                    </div>
+                    <div class="option">
+                        <button onclick="navigate('page7A')">2. Explorar más a fondo esta interpretación inquietante de la "conciencia del cambio", relacionándola con los demás componentes de ADKAR.</button>
+                    </div>
+                </div>
+            `,
+            page6F: `
+                <h1>ADKAR:Un día de pesadilla - Página 6F</h1>
+                <p>Decido ser honesto con el grupo sobre cómo me siento y proponer una actividad de mindfulness antes de continuar.<p>
+                <p>"Quiero ser transparente con vosotros", comienzo, sintiendo un nudo en la garganta. "No me he sentido muy bien hoy, y creo que todos podríamos beneficiarnos de un momento de pausa y reflexión. ¿Os parece si hacemos un breve ejercicio de mindfulness antes de continuar con ADKAR?"<p>
+                <p>El grupo asiente, algunos con expresiones de alivio, otros con miradas de... ¿anticipación? Intento no pensar demasiado en ello.<p>
+                <p>"Bien, vamos a cerrar los ojos y concentrarnos en nuestra respiración", instruyo, cerrando mis propios ojos. "Inhalen profundamente, exhalen lentamente..."<p>
+                <p>Mientras guío el ejercicio, siento una extraña sensación, como si la sala se expandiera y contrajera con cada respiración colectiva. Abro un ojo y veo que las paredes parecen ondular suavemente. Parpadeo y todo vuelve a la normalidad.<p>
+                <p>"Ahora, visualicen el cambio como una ola que nos envuelve", continúo, con voz temblorosa. "Aceptamos su presencia, nos movemos con ella..."<p>
+                <p>De repente, escucho murmullos en la sala. Abro los ojos y veo que todos los participantes están hablando al unísono, sus ojos aún cerrados: "El cambio nos acepta. Nos movemos con él. Somos el cambio."<p>
+                <p>El pánico me invade. Las palabras en el tablero ahora forman una frase clara: "ADKAR: Ahora Despertamos, Knowing All Reality".<p>
+                <p>¿Qué decides hacer?</p>
+                <div class="options">
+                    <div class="option">
+                        <button onclick="navigate('page9A')">1. Interrumpir abruptamente el ejercicio y tratar de volver al tema de ADKAR y la gestión del cambio organizacional.</button>
+                    </div>
+                    <div class="option">
+                        <button onclick="navigate('page8C')">2. Seguir con el ejercicio, intentando guiarlo hacia una conclusión que conecte con los principios de ADKAR de una manera menos inquietante.</button>
+                    </div>
+                </div>
+            `,
+            page7A: `
+                <h1>ADKAR:Un día de pesadilla - Página 7A</h1>
+                <p>Siento que la curiosidad y el miedo se entrelazan dentro de mí, pero decido seguir adelante. "Interesante perspectiva, Carlos," digo, notando que mis propias palabras salen más lentas, más cuidadosas. "Explorar esta idea de un 'cambio interno' podría revelarnos aspectos importantes sobre cómo experimentamos y manejamos el cambio."<p>
+                <p>Miro a los participantes, quienes ahora me observan con una mezcla de expectación y recelo. "Entonces, si tomamos la 'A' de Awareness," continúo, "¿podríamos decir que es la conciencia de nuestros propios miedos y deseos lo que realmente inicia el cambio?"<p>
+                <p>María asiente, sus ojos brillando con una intensidad que no había visto antes. "Sí, y tal vez la 'D' de Desire se relaciona con nuestra aceptación de estos miedos y deseos, permitiéndonos avanzar."<p>
+                <p>"Y el 'K' de Knowledge," agrega Carlos, "podría ser el conocimiento profundo de nosotros mismos, de nuestras sombras internas."<p>
+                <p>La conversación se vuelve más profunda y abstracta. El ambiente en la sala se siente denso, casi tangible. Cada componente de ADKAR toma un nuevo significado, uno que se centra en la transformación personal más que en la organizacional.<p>
+                <p>"¿Qué pasa con Ability?" pregunta un participante al fondo. "¿Sería la capacidad de enfrentar y transformar esos miedos?"<p>
+                <p>Asiento lentamente. "Y Reinforcement, entonces, sería la constante reafirmación de este viaje interno, asegurándonos de no volver a caer en viejos patrones."<p>
+                <p>La sala está en silencio, cada uno inmerso en sus propios pensamientos. Siento que hemos cruzado un umbral, y aunque el camino es incierto, también es fascinante.<p>
+                <p>¿Qué decides hacer?</p>
+                <div class="options">
+                    <div class="option">
+                        <button onclick="navigate('page6A')">1. Intentar redirigir la conversación hacia aspectos más positivos del cambio organizacional.</button>
+                    </div>
+                    <div class="option">
+                        <button onclick="navigate('page8B')">2. Seguir explorando los componentes restantes de ADKAR bajo esta nueva y perturbadora perspectiva.</button>
+                    </div>
+                </div>
+            `,
+            page8A: `
+                <h1>ADKAR:Un día de pesadilla - Página 8A</h1>
+                <p>Decides seguir la línea de pensamiento de Carlos, explorando cómo el "adaptarse o morir" se relaciona con el modelo ADKAR.<p>
+                <p>"Interesante perspectiva, Carlos", dices, sintiendo un escalofrío recorrer tu espalda. "Vamos a explorar cómo ese concepto de 'adaptarse o morir' se relaciona con cada componente de ADKAR."<p>
+                <p>Mientras hablas, las palabras en el tablero se reordenan nuevamente: "Awareness: Acepta la Oscuridad".<p>
+                <p>"Empecemos con la 'A' de Awareness", continúas, tu voz temblando ligeramente. "¿Cómo creeis que la conciencia de esta... necesidad de adaptación afecta nuestra percepción del cambio?"<p>
+                <p>María levanta la mano, sus ojos brillando de una manera extraña. "Creo que la verdadera conciencia viene cuando aceptamos que el cambio no es algo externo, sino que está dentro de nosotros. Estamos evolucionando, quizás en formas que no entendemos completamente."<p>
+                <p>El grupo murmura en acuerdo, y notas que sus sombras en la pared parecen moverse de forma independiente.<p>
+                <p>Carlos agrega: "Y el Deseo, la 'D' de ADKAR, surge cuando reconocemos que resistirse es inutil. Deseamos el cambio porque es la única forma de sobrevivir."<p>
+                <p>De repente, sientes como si la sala se estuviera cerrando sobre ti. Las paredes parecen pulsar al ritmo de un corazón invisible.<p>
+                <p>¿Qué decides hacer?</p>
+                <div class="options">
+                    <div class="option">
+                        <button onclick="navigate('page8B')">1. Seguir explorando los componentes restantes de ADKAR bajo esta nueva y perturbadora perspectiva</button>
+                    </div>
+                    <div class="option">
+                        <button onclick="navigate('page11A')">2. Concluir la sesión con un resumen de los puntos clave discutidos y los próximos pasos a seguir.</button>
+                    </div>
+                </div>
+            `,
+            page9A: `
+                <h1>ADKAR:Un día de pesadilla - Página 9A</h1>
+                <p>Con el corazón latiendo frenéticamente, decides hacer un último intento por retomar el control de la situación.<p>
+                <p>"¡A ver chicos!", dices con voz firme, luchando contra el miedo que amenaza con ahogarte. "Aprecio vuestras... interpretaciones creativas, pero debemos volver a centrarnos en el propósito real de ADKAR en nuestra organización."<p>
+                <p>Las palabras parecen resonar de manera extraña en la sala, como si chocaran contra una barrera invisible. Los participantes te miran con una mezcla de confusión y algo que no puedes identificar.<p>
+                <p>"ADKAR es una herramienta para gestionar el cambio de manera efectiva y positiva", continúas, aferrándote a la racionalidad como un náufrago a un salvavidas. "Hablemos de ejemplos concretos de cómo podemos aplicarlo en nuestros proyectos actuales."<p>
+                <p>Por un momento, el silencio es absoluto. Luego, lentamente, ves un destello de reconocimiento en los ojos de algunos participantes. Ana parpadea varias veces, como si despertara de un trance.<p>
+                <p>"Tienes razón", dice con voz temblorosa. "Creo que nos dejamos llevar un poco. En el equipo, podríamos usar ADKAR para implementar la nueva estructura organizativa que nos proponen."<p>
+                <p>Sientes un alivio momentáneo, pero Carlos te mira fijamente, sus ojos aún oscuros y desenfocados. "¿Estás seguro de que quieres volver?", susurra. "El cambio verdadero espera."<p>
+                <p>¿Qué decides hacer?</p>
+                <div class="options">
+                    <div class="option">
+                        <button onclick="navigate('page10A')">1. Ignorar a Carlos y continuar con la discusión práctica sobre la implementación de ADKAR en la organización.</button>
+                    </div>
+                    <div class="option">
+                        <button onclick="navigate('page10B')">2. Confrontar directamente a Carlos sobre su comportamiento inquietante.</button>
+                    </div>
+                </div>
+            `,
+            page8C: `
+                <h1>ADKAR:Un día de pesadilla - Página 8C</h1>
+                <p>Decides seguir con el ejercicio de mindfulness, intentando guiarlo hacia una conclusión que conecte con los principios de ADKAR de una manera menos inquietante.<p>
+                <p>"Continuemos respirando profundamente", dices, tu voz temblando ligeramente. "Mientras exhalamos, imaginemos que estamos liberando nuestras resistencias al cambio."<p>
+                <p>El murmullo unísono del grupo continúa, pero intentas ignorarlo y seguir adelante.<p>
+                <p>"Ahora, visualicemos cada letra de ADKAR como una etapa en nuestro viaje de transformación. 'A' para Awareness: nos hacemos conscientes del cambio necesario..."<p>
+                <p>De repente, sientes una energía extraña en la sala. Abres los ojos y ves que todos los participantes están de pie, sus ojos aún cerrados, moviéndose en perfecta sincronía.<p>
+                <p>"'D' para Desire", continúan al unísono, "el deseo de participar y apoyar el cambio nos consume."<p>
+                <p>Las paredes de la sala parecen pulsar, y las letras en el tablero se reordenan formando patrones imposibles.<p>
+                <p>"'K' para Knowledge", siguen, sus voces mezclándose en un tono sobrenatural, "el conocimiento fluye a través de nosotros, revelando verdades ocultas."<p>
+                <p>El pánico te invade mientras te das cuenta de que has perdido el control por completo.<p>
+                <p>¿Qué decides hacer?</p>
+                <div class="options">
+                    <div class="option">
+                        <button onclick="navigate('page9C')">1. Interrumpir abruptamente el ejercicio y tratar de salir de la sala.</button>
+                    </div>
+                    <div class="option">
+                        <button onclick="navigate('page9D')">2. Continuar con el ejercicio, esperando que termine por sí solo y devuelva al grupo a la normalidad.</button>
+                    </div>
+                </div>
+            `,
+            page8B: `
+                <h1>ADKAR:Un día de pesadilla - Página 8B</h1>
+                <p>Decides seguir explorando los componentes restantes de ADKAR bajo esta nueva y perturbadora perspectiva, sintiendo que ya no puedes escapar de la dirección que ha tomado la sesión.<p>
+                <p>"Bien... continuemos con el Knowledge, la 'K' de ADKAR", dices, tu voz apenas un susurro. "¿Cómo se relaciona el conocimiento con esta idea de... "sombras internas"?"<p>
+                <p>Ana, una participante que hasta ahora había permanecido en silencio, habla con una voz que parece resonar de manera antinatural en la sala: "El verdadero conocimiento es entender que lo que creíamos saber era apenas la superficie. ADKAR nos está revelando una realidad más profunda."<p>
+                <p>Las luces parpadean y, por un instante, ves que todos los participantes tienen los ojos completamente negros. Parpadeas y todo vuelve a la normalidad, pero el miedo se asienta en tu estómago como un peso helado.<p>
+                <p>"Y la 'A' de Ability...", continúas, sintiendo que cada palabra te cuesta un esfuerzo sobrehumano.<p>
+                <p>Carlos interrumpe: "La habilidad es aceptar el cambio, permitir que nos transforme. Algunos tienen más capacidad que otros para... evolucionar."<p>
+                <p>Mientras habla, notas que su piel parece ondular, como si algo se moviera debajo. Cierras los ojos por un momento, esperando que la visión desaparezca.<p>
+                <p>Cuando los abres, ves que las palabras en el tablero han cambiado una vez más: "Reinforcement: Renacer en la Oscuridad".<p>
+                <p>María se levanta, su voz mezclándose con las de los demás en un coro inquietante: "Y el Refuerzo... es abrazar completamente esta nueva realidad. No hay vuelta atrás. El cambio nos ha elegido."<p>
+                <p>La sala comienza a girar a tu alrededor, las paredes se funden y reforman, mostrando escenas de tu pesadilla. El pánico te invade mientras te das cuenta de que la línea entre el sueño y la realidad se ha borrado por completo.<p>
+                <p>¿Qué decides hacer?</p>
+                <div class="options">
+                    <div class="option">
+                        <button onclick="navigate('page9B')">1. Sucumbir al pánico y tratar de huir de la sala, abandonando la sesión.</button>
+                    </div>
+                    <div class="option">
+                        <button onclick="navigate('page10C')">2. Hacer un último intento desesperado por retomar el control, apelando a la racionalidad del grupo.</button>
+                    </div>
+                </div>
+            `,
+            page10A: `
+                <h1>ADKAR:Un día de pesadilla - Página 10A</h1>
+                <p>Decides ignorar a Carlos y continuar con la discusión práctica sobre la implementación de ADKAR en la organización.<p>
+                <p>"Gracias, Ana", dices, intentando mantener la calma. "Ese es exactamente el tipo de aplicación práctica que necesitamos discutir. ¿Alguien más tiene ejemplos concretos de cómo podemos usar ADKAR?"<p>
+                <p>Poco a poco, más participantes comienzan a unirse a la conversación, compartiendo ideas sobre cómo aplicar el modelo en sus áreas de trabajo. Sientes que la atmósfera en la sala comienza a normalizarse, aunque no puedes evitar notar las miradas ocasionales de Carlos.<p>
+                <p>Mientras la discusión avanza, te concentras en mantener el enfoque en aspectos prácticos y tangibles del cambio organizacional, evitando cualquier deriva hacia temas más... inquietantes.<p>
+                <p>¿Qué decides hacer?</p>
+                <div class="options">
+                    <div class="option">
+                        <button onclick="navigate('page11A')">1. Concluir la sesión con un resumen de los puntos clave discutidos y los próximos pasos a seguir.</button>
+                    </div>
+                    <div class="option">
+                        <button onclick="navigate('page11D')">2. Proponer una discusión grupal sobre la experiencia y cómo se relaciona con ADKAR.</button>
+                    </div>
+                </div>
+            `,
+            page10B: `
+                <h1>ADKAR:Un día de pesadilla - Página 10B</h1>
+                <p>Decides confrontar directamente a Carlos sobre su comportamiento inquietante.<p>
+                <p>"Carlos", dices, mirándolo fijamente, "tu comportamiento está siendo disruptivo y poco profesional. ¿Puedes explicar qué está pasando?"<p>
+                <p>El silencio cae sobre la sala como una losa. Los demás participantes miran alternativamente entre tú y Carlos, sus expresiones una mezcla de confusión y aprensión.<p>
+                <p>Carlos te sostiene la mirada, una sonrisa enigmática jugando en sus labios. "Solo estoy abrazando el cambio", dice suavemente. "¿No es eso lo que ADKAR nos enseña?"<p>
+                <p>Su manera de decirlo te hiela la sangre y tienes que hacer algo para reconducir esta situación.<p>
+                <p>¿Qué decides hacer?</p>
+                <div class="options">
+                    <div class="option">
+                        <button onclick="navigate('page11B')">1. Pedir a Carlos que abandone la sesión si no puede mantener un comportamiento profesional.</button>
+                    </div>
+                    <div class="option">
+                        <button onclick="navigate('page10A')">2. Intentar volver a reconducir la discusión sobre la implementación de ADKAR en la organización.</button>
+                    </div>
+                </div>
+            `,
+            page9C: `
+                <h1>ADKAR:Un día de pesadilla - Página 9C</h1>
+                <p>Decides interrumpir abruptamente el ejercicio y tratar de salir de la sala.<p>
+                <p>"¡Suficiente!", exclamas, tu voz rompiendo el murmullo unísono del grupo. Abres los ojos y te pones de pie de un salto, dirigiéndote rápidamente hacia la puerta.<p>
+                <p>Los participantes parecen despertar de su trance, mirándote con confusión. "¿Qué sucede?", pregunta María, su voz sonando normal nuevamente.<p>
+                <p>Con la mano en el pomo de la puerta, te detienes, dudando. La atmósfera en la sala parece haber vuelto a la normalidad, pero el miedo aún corre por tus venas.<p>
+                <p>¿Qué decides hacer?</p>
+                <div class="options">
+                    <div class="option">
+                        <button onclick="navigate('page14B')">1. Salir de la sala y buscar a tu supervisor para explicar la situación.</button>
+                    </div>
+                    <div class="option">
+                        <button onclick="navigate('page10F')">2. Volver al grupo y tratar de explicar tu reacción, buscando entender qué ha sucedido.</button>
+                    </div>
+                </div>
+            `,
+            page9D: `
+                <h1>ADKAR:Un día de pesadilla - Página 9D</h1>
+                <p>Decides continuar con el ejercicio, esperando que termine por sí solo y devuelva al grupo a la normalidad.<p>
+                <p>Con el corazón latiendo aceleradamente, sigues guiando el ejercicio: "Y finalmente, 'R' para Reinforcement. Visualicemos cómo reforzamos el cambio positivo en nuestra organización..."<p>
+                <p>Para tu alivio, las voces del grupo comienzan a desincronizarse y los movimientos se vuelven menos coordinados. Poco a poco, los participantes abren los ojos, pareciendo desorientados.<p>
+                <p>"Wow", dice Ana, parpadeando. "Eso fue... intenso. Me siento muy conectada con el proceso de cambio ahora."<p>
+                <p>Otros asienten, murmurando en acuerdo. La atmósfera en la sala parece haber vuelto a la normalidad, pero no puedes sacudirte la sensación de inquietud.<p>
+                <p>¿Qué decides hacer?</p>
+                <div class="options">
+                    <div class="option">
+                        <button onclick="navigate('page11A')">1. Concluir la sesión con un resumen de los puntos clave discutidos y los próximos pasos a seguir.</button>
+                    </div>
+                    <div class="option">
+                        <button onclick="navigate('page11D')">2. Proponer una discusión grupal sobre la experiencia y cómo se relaciona con ADKAR.</button>
+                    </div>
+                </div>
+            `,
+            page9B: `
+                <h1>ADKAR:Un día de pesadilla - Página 9B</h1>
+                <p>Decides sucumbir al pánico y tratar de huir de la sala, abandonando la sesión.<p>
+                <p>Te levantas bruscamente, tu silla cayendo al suelo con un estruendo que parece resonar de manera antinatural en la sala. Los participantes te miran con una mezcla de sorpresa y algo más... algo hambriento en sus ojos.<p>
+                <p>"Yo... necesito un momento", balbuceas mientras te diriges apresuradamente hacia la puerta.<p>
+                <p>Pero cuando intentas abrirla, descubres con horror que está cerrada. Tiras del pomo con desesperación, pero no cede.<p>
+                <p>"¿A dónde vas?", pregunta Carlos, su voz sonando extrañamente distorsionada. "El cambio apenas está comenzando."<p>
+                <p>Te giras y ves que todo el grupo se ha puesto de pie, moviéndose hacia ti con una sincronía perturbadora. Sus sombras en la pared parecen tener vida propia, retorciéndose y alargándose de manera imposible.<p>
+                <p>"ADKAR no es solo un modelo", dice María, su voz mezclándose con las de los demás. "Es una puerta. Y tú tienes la llave."<p>
+                <p>El pánico te consume mientras buscas desesperadamente una salida.<p>
+                <p>¿Qué decides hacer?</p>
+                <div class="options">
+                    <div class="option">
+                        <button onclick="navigate('page10C')">1. Intentar razonar con el grupo, apelando a su humanidad y tratando de romper lo que sea que los está controlando.</button>
+                    </div>
+                    <div class="option">
+                        <button onclick="navigate('page14A')">2. Buscar otra salida, como una ventana o una puerta de emergencia, dispuesto a hacer lo que sea necesario para escapar.</button>
+                    </div>
+                </div>
+            `,
+            page11A: `
+                <h1>ADKAR:Un día de pesadilla - Página 11A</h1>
+                <p>Decides concluir la sesión con un resumen de los puntos clave discutidos y los próximos pasos a seguir.<p>
+                <p>"Bien, creo que hemos tenido una discusión muy productiva", dices, sintiendo un alivio cauto. "Vamos a resumir los puntos principales que hemos tratado sobre la implementación del modelo ADKAR en el cambio organizativo."<p>
+                <p>Mientras recapitulas las ideas compartidas por el grupo, notas que la mayoría de los participantes están tomando notas activamente. Sin embargo, Carlos sigue mirándote con una intensidad inquietante.<p>
+                <p>"Para concluir", continúas, "propongo que, como equipo, desarrolleis el plan de acción basado en ADKAR. Nos reuniremos en dos semanas para compartir y discutir estos planes."<p>
+                <p>¿Cómo decides manejar los últimos minutos de la sesión?</p>
+                <div class="options">
+                    <div class="option">
+                        <button onclick="navigate('page12A')">1. Abrir un turno de preguntas y comentarios finales.</button>
+                    </div>
+                    <div class="option">
+                        <button onclick="navigate('page12B')">2. Dar por terminada la sesión y hablar individualmente con algunos participantes, incluido Carlos.</button>
+                    </div>
+                </div>
+            `,
+            page11B: `
+                <h1>ADKAR:Un día de pesadilla - Página 11B</h1>
+                <p>Decides pedir a Carlos que abandone la sesión si no puede mantener un comportamiento profesional.<p>
+                <p>"Carlos", dices con firmeza, "si no puedes participar de manera constructiva, te voy a pedir que abandones la sesión."<p>
+                <p>Un silencio tenso cae sobre la sala. Los otros participantes se mueven incómodos en sus asientos, evitando mirar directamente a Carlos o a ti.<p>
+                <p>Carlos se levanta lentamente, su sonrisa nunca abandonando su rostro. "Como desees", dice suavemente. "Pero recuerda, el cambio siempre encuentra su camino."<p>
+                <p>Mientras se dirige hacia la puerta, notas que las sombras en la pared parecen moverse de manera extraña, pero parpadeas y todo vuelve a la normalidad.<p>
+                <p>¿Cómo decides proceder después de la salida de Carlos?</p>
+                <div class="options">
+                    <div class="option">
+                        <button onclick="navigate('page12C')">1. Continuar la sesión como si nada hubiera pasado, centrándote en los aspectos prácticos de ADKAR.</button>
+                    </div>
+                    <div class="option">
+                        <button onclick="navigate('page12D')">2. Abordar directamente lo sucedido con el grupo, buscando su perspectiva sobre el comportamiento de Carlos.</button>
+                    </div>
+                </div>
+            `,
+            page11D: `
+                <h1>ADKAR:Un día de pesadilla - Página 11D</h1>
+                <p>Decides proponer una discusión grupal sobre la experiencia y cómo se relaciona con ADKAR.<p>
+                <p>"Bien, eso fue ciertamente una experiencia única", dices, tratando de mantener un tono ligero. "Vamos a hablar sobre cómo esta experiencia se relaciona con los componentes de ADKAR."
+                <p>El grupo comienza a compartir sus percepciones. Muchos hablan de una mayor "conciencia" del cambio, otros mencionan un "deseo" intensificado de participar en el proceso.<p>
+                <p>Sin embargo, mientras la discusión avanza, notas que algunos participantes intercambian miradas significativas, como si compartieran un secreto que tú no conoces.<p>
+                <p>¿Qué decides hacer?</p>
+                <div class="options">
+                    <div class="option">
+                        <button onclick="navigate('page12A')">1. Abrir un turno de preguntas y comentarios finales.</button>
+                    </div>
+                    <div class="option">
+                        <button onclick="navigate('page12B')">2. Dar por terminada la sesión y hablar individualmente con algunos participantes, incluido Carlos.</button>
+                    </div>
+                </div>
+            `,
+            page14B: `
+                <h1>ADKAR:Un día de pesadilla - Página 14B</h1>
+                <p>Decides salir de la sala y buscar a tu responsable para explicar la situación.<p>
+                <p>Abres la puerta y sales al pasillo, tus pasos resonando en la fría estructura del edificio. Te diriges rápidamente hacia la oficina de Eva.<p>
+                <p>Al llegar, encuentras la puerta entreabierta. Llamas antes de entrar, pero no hay respuesta.<p>
+                <p>Empujas la puerta con cautela y te encuentras con una escena inesperada: tu responsable está sentada en su escritorio, pero parece estar en un trance, murmurando algo inaudible.<p>
+                <p>¿Qué decides hacer?</p>
+                <div class="options">
+                    <div class="option">
+                        <button onclick="navigate('page15C')">1. Intentar despertar a tu responsable, moviendola suavemente.</button>
+                    </div>
+                    <div class="option">
+                        <button onclick="navigate('page15D')">2. Buscar en el escritorio alguna pista que te ayude a entender qué está pasando.</button>
+                    </div>
+                </div>
+            `,
+            page10F: `
+                <h1>ADKAR:Un día de pesadilla - Página 10F</h1>
+                <p>Respirando profundamente, decides volver al grupo. Al entrar en la sala, todos los ojos se vuelven hacia ti.<p>
+                <p>"Lo siento por mi reacción", dices, tratando de mantener la calma. "Creo que el ejercicio fue más intenso de lo que esperaba. ¿Podéis decirme cómo lo habéis experimentado vosotros?"<p>
+                <p>María es la primera en hablar: "Fue... poderoso. Sentí como si realmente estuviéramos conectados con el proceso de cambio."<p>
+                <p>Otros asienten, pero notas que algunos parecen confundidos, como si no recordaran exactamente lo que pasó.<p>
+                <p>Carlos te mira fijamente: "El cambio nos afecta a todos de maneras diferentes. Quizás tú lo sientes más... intensamente."<p>
+                <p>Su comentario te deja una sensación inquietante.<p>
+                <p>¿Qué decides hacer?</p>
+                <div class="options">
+                    <div class="option">
+                        <button onclick="navigate('page10A')">1. Proponer continuar la sesión de una manera más tradicional, centrándote en los aspectos prácticos de ADKAR.</button>
+                    </div>
+                    <div class="option">
+                        <button onclick="navigate('page11D')">2. Proponer una discusión grupal sobre la experiencia y cómo se relaciona con ADKAR.</button>
+                    </div>
+                </div>
+            `,
+            page10C: `
+                <h1>ADKAR:Un día de pesadilla - Página 10C</h1>
+                <p>"Escuchad, por favor", dices, tu voz temblando pero determinada. "Somos compañeros, somos personas. Este no es el cambio del que hablamos con ADKAR. Algo está mal aquí."<p>
+                <p>Por un momento, ves un destello de reconocimiento en los ojos de algunos. Ana parpadea, como si estuviera despertando de un trance.<p>
+                <p>"¿Qué... qué está pasando?", murmura, confundida.<p>
+                <p>Pero Carlos da un paso adelante, su voz resonando de manera antinatural. "El cambio ya está aquí. No puedes detenerlo."<p>
+                <p>¿Qué decides hacer?</p>
+                <div class="options">
+                    <div class="option">
+                        <button onclick="navigate('page13B')">1. Ignorar el comentario y dar por terminada la sesión, agradeciendo a todos por su participación.</button>
+                    </div>
+                    <div class="option">
+                        <button onclick="navigate('page10B')">2. Confrontar a Carlos directamente sobre su comportamiento y comentarios inquietantes.</button>
+                    </div>
+                </div>
+            `,
+            page14A: `
+                <h1>ADKAR:Un día de pesadilla - Página 14A</h1>
+                <p>Decides buscar otra salida, como una ventana o una puerta de emergencia, dispuesto a hacer lo que sea necesario para escapar.<p>
+                <p>Tus ojos recorren frenéticamente la sala hasta que localizas una ventana al fondo. Sin perder tiempo, corres hacia ella.<p>
+                <p>La ventana está cerrada, pero con un golpe desesperado logras abrirla. Miras hacia abajo y ves que estás en un segundo piso "cojonudo".<p>
+                <p>No es una caída mortal, pero podría doler. Los pasos sincronizados del grupo se acercan. No hay tiempo para dudar.<p>
+                <p>"La madre que me parió..."
+                <p>¿Qué decides hacer?</p>
+                <div class="options">
+                    <div class="option">
+                        <button onclick="navigate('page15A')">1. Saltar por la ventana, esperando amortiguar la caída con los arbustos de abajo.</button>
+                    </div>
+                    <div class="option">
+                        <button onclick="navigate('page15B')">2. Buscar algo en la sala que puedas usar para defenderte y enfrentar al grupo.</button>
+                    </div>
+                </div>
+            `,
+            page12A: `
+                <h1>ADKAR:Un día de pesadilla - Página 12A</h1>
+                <p>Decides abrir un turno de preguntas y comentarios finales.<p>
+                <p>"Antes de terminar, ¿alguien tiene alguna pregunta o comentario final?", preguntas, recorriendo la sala con la mirada.<p>
+                <p>Ana levanta la mano. "Me pregunto cómo podemos manejar la resistencia al cambio cuando aplicamos estos cambios organizativos."<p>
+                <p>Mientras respondes, notas que Carlos se inclina hacia adelante, sus ojos brillando con una intensidad inquietante.<p>
+                <p>"El cambio siempre encuentra resistencia", interrumpe Carlos. "Pero la verdadera pregunta es: ¿estamos realmente cambiando la organización, o es la organización la que nos está cambiando a nosotros?"<p>
+                <p>Un silencio incómodo cae sobre la sala. Algunos participantes asienten sutilmente, mientras otros evitan el contacto visual.<p>
+                <p>¿Qué decides hacer?</p>
+                <div class="options">
+                    <div class="option">
+                        <button onclick="navigate('page13A')">1. Abordar directamente el comentario de Carlos, tratando de reconducirlo hacia una perspectiva más constructiva.</button>
+                    </div>
+                    <div class="option">
+                        <button onclick="navigate('page13B')">2. Ignorar el comentario y dar por terminada la sesión, agradeciendo a todos por su participación.</button>
+                    </div>
+                </div>
+            `,
+            page12B: `
+                <h1>ADKAR:Un día de pesadilla - Página 12B</h1>
+                <p>Decides dar por terminada la sesión y hablar individualmente con algunos participantes, incluido Carlos.<p>
+                <p>"Gracias a todos por vuestra participación", dices. "La sesión ha terminado. Por favor, no olvideis desarrollar los planes de acción para la próxima reunión."
+                <p>Mientras los participantes comienzan a salir, te acercas a Carlos. Su sonrisa enigmática no ha abandonado su rostro.<p>
+                <p>"Carlos, me gustaría hablar contigo un momento", dices en voz baja.<p>
+                <p>"Por supuesto", responde, sus ojos brillando con una intensidad perturbadora. "Estaba esperando que lo hicieras."<p>
+                <p>Cuando están solos, Carlos se inclina hacia ti y susurra: "¿Has notado cómo el cambio está afectando a todos? No solo a la organización, sino a nosotros mismos. ADKAR es solo el principio."<p>
+                <p>Un escalofrío recorre tu espalda mientras consideras tus opciones.<p>
+                <p>¿Qué decides hacer?</p>
+                <div class="options">
+                    <div class="option">
+                        <button onclick="navigate('page14D')">1. Confrontar a Carlos directamente sobre su comportamiento y comentarios inquietantes.</button>
+                    </div>
+                    <div class="option">
+                        <button onclick="navigate('page14E')">2. Escuchar más sobre lo que Carlos tiene que decir, tratando de entender su perspectiva.</button>
+                    </div>
+                </div>
+            `,
+            page12C: `
+                <h1>ADKAR:Un día de pesadilla - Página 12C</h1>
+                <p>Decides continuar la sesión como si nada hubiera pasado, centrándote en los aspectos prácticos de ADKAR.<p>
+                <p>"Bien, volvamos a nuestro tema", dices, tratando de mantener un tono profesional. "Estábamos discutiendo cómo el modelo ADKAR nos podia ayudar en la gestión del cambio. ¿Alguien quiere compartir un ejemplo concreto?"<p>
+                <p>Mientras los participantes comienzan a compartir sus ideas, notas que el ambiente en la sala sigue tenso. Algunos lanzan miradas nerviosas hacia la puerta por donde salió Carlos.<p>
+                <p>De repente, las luces parpadean brevemente. Por un instante, crees ver sombras moviéndose de forma antinatural en las paredes, pero cuando parpadeas, todo parece normal.<p>
+                <p>Ana levanta la mano tímidamente. "Yo... no estoy segura de si deberíamos continuar sin Carlos. Sus ideas eran... diferentes, pero tal vez tenía un punto sobre el cambio."<p>
+                <p>¿Qué decides hacer?</p>
+                <div class="options">
+                    <div class="option">
+                        <button onclick="navigate('page14E')">1. Aceptar que vuelva Carlos y escuchar más sobre lo que tiene que decir, tratando de entender su perspectiva.</button>
+                    </div>
+                    <div class="option">
+                        <button onclick="navigate('page12D')">2. Permitir una breve discusión sobre los comentarios de Carlos, tratando de reconducirla hacia una perspectiva constructiva.</button>
+                    </div>
+                </div>
+            `,
+            page12D: `
+                <h1>ADKAR:Un día de pesadilla - Página 12D</h1>
+                <p>Decides abordar directamente lo sucedido con el grupo, buscando su perspectiva sobre el comportamiento de Carlos.<p>
+                <p>"Antes de continuar, creo que debemos hablar sobre lo que acaba de ocurrir", dices. "¿Cómo os sentis respecto a los comentarios de Carlos y su salida?"<p>
+                <p>Un silencio incómodo llena la sala por unos momentos. Finalmente, María habla:<p>
+                <p>"Sus palabras eran inquietantes, pero... ¿no es el cambio a veces perturbador? Tal vez Carlos estaba tratando de hacernos ver algo que no queremos admitir."<p>
+                <p>Otros participantes asienten lentamente. Notas que las sombras en la sala parecen más pronunciadas, como si se estuvieran alargando.<p>
+                <p>Ana agrega: "Siento que hay algo más grande sucediendo aquí. ADKAR ya no parece solo un modelo de gestión del cambio, sino... algo más profundo."<p>
+                <p>La atmósfera en la sala se vuelve densa, casi opresiva. Sientes que estás en un punto crucial.<p>
+                <p>¿Qué decides hacer?</p>
+                <div class="options">
+                    <div class="option">
+                        <button onclick="navigate('page12B')">1. Dar por terminada la sesión y hablar individualmente con algunos participantes, incluido Carlos.</button>
+                    </div>
+                    <div class="option">
+                        <button onclick="navigate('page14E')">2. Aceptar que vuelva Carlos y escuchar más sobre lo que tiene que decir, tratando de entender su perspectiva.</button>
+                    </div>
+                </div>
+            `,
+            page15C: `
+                <h1>ADKAR:Un día de pesadilla - Página 15C</h1>
+                <p>Intentas despertar a Eva, moviendola suavemente. "¡Despierta!", insistes, pero su murmullo sigue incesante.<p>
+                <p>Finalmente, abre los ojos y te mira, pero sus ojos no parecen enfocar realmente. "ADKAR...", murmura, "el aire..."
+                <p>De repente, se levanta de un salto, agarrándote del brazo con una fuerza inesperada. "Debemos detenerlo... antes de que sea demasiado tarde."<p>
+                <p>¿Qué decides hacer?</p>
+                <div class="options">
+                    <div class="option">
+                        <button onclick="navigate('page16E')">1. Intentar calmarla y obtener más información sobre lo que está diciendo.</button>
+                    </div>
+                    <div class="option">
+                        <button onclick="navigate('page16F')">2. Forzarla a salir de la oficina contigo, buscando ayuda de alguien más.</button>
+                    </div>
+                </div>
+            `,
+            page15D: `
+                <h1>ADKAR:Un día de pesadilla - Página 15D</h1>
+                <p>Decides buscar en el escritorio alguna pista que te ayude a entender qué está pasando.<p>
+                <p>Rápidamente revisas los papeles y archivos esparcidos por el escritorio. Encuentras un documento titulado "Proyecto ADKAR: Más allá del cambio."<p>
+                <p>Al hojearlo, te das cuenta de que contiene referencias a experimentos psicológicos a partir de unos fármacos y algo que parece más un ritual que una metodología de gestión del cambio.<p>
+                <p>El documento menciona un "control total" y un "punto de no retorno."<p>
+                <p>¿Qué decides hacer?</p>
+                <div class="options">
+                    <div class="option">
+                        <button onclick="navigate('page16G')">1. Llevar el documento contigo y buscar a alguien más en la oficina para discutirlo.</button>
+                    </div>
+                    <div class="option">
+                        <button onclick="navigate('page16H')">2. Confrontar nuevamente a Eva con esta nueva información, exigiendo respuestas.</button>
+                    </div>
+                </div>
+            `,
+            page15A: `
+                <h1>ADKAR:Un día de pesadilla - Página 15A</h1>
+                <p>Decides saltar por la ventana, esperando amortiguar la caída con los arbustos de abajo "a tomar por cul...".<p>
+                <p>Te lanzas, sintiendo el viento en tu rostro durante la breve caída. Aterrizas con un golpe seco en los arbustos, pero afortunadamente no sufres más que unos rasguños<p>
+                <p>Te pones de pie y miras hacia la ventana, viendo las caras confusas de los participantes asomarse.<p>
+                <p>Les dedicas un gesto triunfante con el dedo corazón, fruto de la adrenalina que recorre tu cuerpo en ese momento<p>
+                <p>¿Qué decides hacer?</p>
+                <div class="options">
+                    <div class="option">
+                        <button onclick="navigate('page16A')">1. Correr hacia el parking y tratar de encontrar tu coche para salir del lugar.</button>
+                    </div>
+                    <div class="option">
+                        <button onclick="navigate('page16B')">2. Buscar a alguien fuera del edificio para pedir ayuda y explicar la situación.</button>
+                    </div>
+                </div>
+            `,
+            page15B: `
+                <h1>ADKAR:Un día de pesadilla - Página 15B</h1>
+                <p>Decides buscar algo en la sala que puedas usar para defenderte y enfrentar al grupo. <p>
+                <p>Tus ojos recorren la sala rápidamente hasta que encuentras un extintor de incendios montado en la pared.<p>
+                <p>Lo tomas con ambas manos, sintiendo su peso y la esperanza de que pueda ayudarte.<p>
+                <p>El grupo sigue avanzando hacia ti, sus miradas vacías y hambrientas. Levantas el extintor, dispuesto a usarlo si es necesario.<p>
+                <p>"Joder, esto parece The Walkind Dead, no me lo puedo creer..."<p>
+                <p>¿Qué decides hacer?</p>
+                <div class="options">
+                    <div class="option">
+                        <button onclick="navigate('page16C')">1. Amenazar al grupo con el extintor, exigiendo que se detengan y te dejen salir.</button>
+                    </div>
+                    <div class="option">
+                        <button onclick="navigate('page16D')">2. Usar el extintor directamente sobre ellos, tratando de abrirte camino hacia la puerta.</button>
+                    </div>
+                </div>
+            `,
+            page13A: `
+                <h1>ADKAR:Un día de pesadilla - Página 13A</h1>
+                <p>Decides abordar directamente el comentario de Carlos, tratando de reconducirlo hacia una perspectiva más constructiva.<p>
+                <p>"Carlos, aprecio tu perspectiva", dices, manteniendo un tono firme pero neutral. "Es cierto que el cambio es bidireccional. Sin embargo, nuestro objetivo con ADKAR es gestionar el cambio de manera positiva y controlada. ¿Cómo crees que podemos usar esta idea para mejorar nuestra implementación?"<p>
+                <p>Carlos te mira fijamente, una sonrisa enigmática jugando en sus labios. "Ah, pero ¿realmente podemos controlar el cambio? ¿O es el cambio el que nos controla a nosotros?"<p>
+                <p>Sientes un escalofrío recorrer tu espalda mientras el resto del grupo observa en silencio, esperando tu respuesta.<p>
+                <p>¿Qué decides hacer?</p>
+                <div class="options">
+                    <div class="option">
+                        <button onclick="navigate('page14E')">1. Escuchar más sobre lo que Carlos tiene que decir, tratando de entender su perspectiva.</button>
+                    </div>
+                    <div class="option">
+                        <button onclick="navigate('page12B')">2. Dar por terminada la sesión y hablar con todos, incluido Carlos.</button>
+                    </div>
+                </div>
+            `,
+            page13B: `
+                <h1>ADKAR:Un día de pesadilla - Página 13B</h1>
+                <p>Optas por ignorar el comentario de Carlos y dar por terminada la sesión.<p>
+                <p>"Gracias a todos por sus valiosas contribuciones", dices, forzando una sonrisa. "Recordemos aplicar los planes de acción que habéis identificado. Nos veremos en dos semanas para compartir los avances."<p>
+                <p>Mientras los participantes comienzan a salir, notas que algunos forman pequeños grupos, susurrando entre sí. Carlos se queda rezagado, sus ojos nunca dejando los tuyos.<p>
+                <p>Cuando la sala está casi vacía, se acerca a ti. "El cambio ya está en marcha", murmura. "ADKAR es solo el comienzo."<p>
+                <p>¿Qué decides hacer?</p>
+                <div class="options">
+                    <div class="option">
+                        <button onclick="navigate('page14D')">1. Confrontar a Carlos sobre su comportamiento durante toda la sesión.</button>
+                    </div>
+                    <div class="option">
+                        <button onclick="navigate('page14B')">2. Ignorarlo y salir rápidamente de la sala, para comentar la situación con tu responsable.</button>
+                    </div>
+                </div>
+            `,
+            page14E: `
+                <h1>ADKAR:Un día de pesadilla - Página 14E</h1>
+                <p>Optas por escuchar más sobre lo que Carlos tiene que decir, tratando de entender su perspectiva.<p>
+                <p>"Dime más, Carlos", dices, sintiendo una mezcla de curiosidad y aprensión. "¿Qué quieres decir con que ADKAR es solo el principio?"<p>
+                <p>Carlos sonríe, un brillo inquietante en sus ojos. "ADKAR no es solo un modelo de gestión del cambio. Es una puerta hacia una realidad más profunda. Awareness, Desire, Knowledge, Ability, Reinforcement... cada paso nos acerca más a la verdad."<p>
+                <p>Mientras habla, sientes como si la oficina se volviera más oscura, las sombras más pronunciadas.<p>
+                <p>"¿Quieres ver lo que hay del otro lado?", pregunta Carlos, extendiendo su mano hacia ti.<p>
+                <p>¿Qué decides hacer?</p>
+                <div class="options">
+                    <div class="option">
+                        <button onclick="navigate('page14B')">1. Rechazar la oferta de Carlos y salir rápidamente de la sala, para comentar la situación con tu responsable.</button>
+                    </div>
+                    <div class="option">
+                        <button onclick="navigate('page15H')">2. Tomar la mano de Carlos, sintiendo que estás al borde de un descubrimiento trascendental.</button>
+                    </div>
+                </div>
+            `,
+            page16E: `
+                <h1>ADKAR:Un día de pesadilla - Final</h1>
+                <p>Intentas calmar a Eva y obtener más información sobre lo que está diciendo.<p>
+                <p>"¿Qué debemos detener?", preguntas. "¿Qué pasa con el aire?"<p>
+                <p>Eva te cuenta la verdad sobre un experimento para expandir un fármaco a través del aire acondicionado.<p>
+                <p>Cuando supo que iba a usar ADKAR para la sesión, aprovecharon para activarlo en la sala donde ibamos a estar, llamandolo "proyecto ADKAR".<p>
+                <p>"No podiamos permitir que la gente piense libremente, deben estar completamente alineados con lo que queremos en la dirección" Empieza a relatar Eva.<p>
+                <p>"Pero, ¡hay mejores formas de conseguirlo!"subes bastante el tono "¡cualquiera menos drogarnos para que pensemos todos igual!", "¿sabes los efectos que está teniendo en nuestras cabezas?"<p>
+                <p>"No necesitamos libre pensantes, necesitamos un ejército de personas que cumplan todo lo que se le pide, sin discutir" continua Eva,"Ese fármaco, asegura la continuidad de esta empresa durante mucho tiempo, ya que siempre van a estar de acuerdo con lo que se les diga que hagan".<p>
+                <p>"No entiendo cómo hemos llegado a esto" digo con voz rota de incredulidad.<p>
+                <p>"Lo siento" continuó Eva. "Cuando descubrí que iba a afectarnos a todos y no a un grupo concreto, me asusté, pero ya no sabía como pararlo".<p>
+                <p>"Yo te apoyaré, resolvamos esto juntos" le digo con la esperanza de que recapacite<p>
+                <p>Finalmente, logras convencerla y denunciar el caso. Los responsables fueron detenidos, incluida Eva, que tenía que dar muchas explicaciones.<p>
+                <p>Los participantes de la sesión, fueron tratados para limpiar de su organismo, todo resto del fármaco, aunque tardarían mucho tiempo en volver a la normalidad.<p>
+                <p>Carlos dejó la compañia, después del suceso y se dedicó a acompañar a otras personas que habían sufrido procesos traumáticos, a seguir adelante.<p>
+                <p>En mi caso...Sigo creyendo en la gestión del cambio, pero salí de la compañía y me he puesto a trabajar por mi cuenta, no volveré nunca más a esas instalaciones.<p>
+                <div class="options">
+                    <div class="option">
+                        <button onclick="navigate('agradecimientos')">Agradecimientos.</button>
+                    </div>
+                </div>
+            `,
+            page16F: `
+                <h1>ADKAR:Un día de pesadilla - Final</h1>
+                <p>Obligas a Eva a salir de la oficina contigo, buscando ayuda de alguien más. Al salir, encuentras a otros empleados y les explicas la situación.<p>
+                <p>Ante la mirada curiosa del resto de empleados, Eva rompe a llorar y nos empieza a contar toda la verdad...<p>
+                <p>Comienza a relatar sobre un experimento para expandir un fármaco a través del aire acondicionado.<p>
+                <p>Cuando supo que iba a usar ADKAR para la sesión, aprovecharon para activarlo en la sala donde ibamos a estar, llamandolo "proyecto ADKAR".<p>
+                <p>"No podiamos permitir que la gente piense libremente, deben estar completamente alineados con lo que queremos en la dirección" Empieza a relatar Eva.<p>
+                <p>"Pero, ¡hay mejores formas de conseguirlo!"subes bastante el tono "¡cualquiera menos drogarnos para que pensemos todos igual!", "¿sabes los efectos que está teniendo en nuestras cabezas?"<p>
+                <p>"No necesitamos libre pensantes, necesitamos un ejército de personas que cumplan todo lo que se le pide, sin discutir" continua Eva,"Ese fármaco, asegura la continuidad de esta empresa durante mucho tiempo, ya que siempre van a estar de acuerdo con lo que se les diga que hagan".<p>
+                <p>"Pero, ¿tú escuchas lo que estás diciendo?"Le grita otro de los empleados.<p>
+                <p>"Lo siento" continuó Eva. "Cuando descubrí que iba a afectarnos a todos y no a un grupo concreto, me asusté, pero ya no sabía como pararlo".<p>
+                <p>"Esto ha llegado demasiado lejos, se acabó" Digo, cogiendo el teléfono para llamar a la policia.<p>
+                <p>Los responsables fueron detenidos, incluida Eva, que tenía que dar muchas explicaciones.<p>
+                <p>Los participantes de la sesión, fueron tratados para limpiar de su organismo, todo resto del fármaco, aunque tardarían mucho tiempo en volver a la normalidad.<p>
+                <p>Las investigaciones descubrieron que había muchas personas implicadas en la trama, incluido Carlos, aunque a él acabó por afectarle el fármaco más que a los demás y acabó en el hospital.<p>
+                <p>La compañía cerró y me quedé sin trabajo...aunque por poco tiempo, ya que la noticia corrió como la pólvora y no tardé mucho en volver a ser gestor del cambio...aunque las pesadillas nunca desaparecieron del todo.<p>
+                <div class="options">
+                    <div class="option">
+                        <button onclick="navigate('agradecimientos')">Agradecimientos.</button>
+                    </div>
+                </div>
+            `,
+            page16G: `
+                <h1>ADKAR:Un día de pesadilla - Final</h1>
+                <p>Llevas el documento contigo y buscas a alguien más en la oficina para discutirlo.<p>
+                <p>Encuentras a un compañero de confianza y le muestras el documento.<p>
+                <p>Comenzais a leer como la intención de la compañía era modificar la conducta de todos los empleados, a través de un fármaco que se extendía por el aire acondicionado.<p>
+                <p>Su intención era tenernos a todos controlados y que acatemos siempre las decisiones que se tomaran, fueran las que fueran.<p>
+                <p>Juntos, lograis exponer el peligro del proyecto ADKAR a las autoridades, añadidos a los efectos secundarios que también ha provocado sobre las personas que han inhalado ese fármaco.<p>
+                <p>Las revelaciones provocan un cierre inmediato del proyecto y una revisión completa de las prácticas de la empresa.<p>
+                <p>Los responsables son identificados y puestos a disposición judicial.<p>
+                <p>Como agradecimiento, la nueva dirección, te propone para que seas el nuevo responsable de estos proyectos dentro de la compañia, para asegurar que no vuelva a repetirse.<p>
+                <p>Decides aceptar el cargo y seguir trabajando, pero con más cautela y siempre priorizando la ética.<p>
+                <p>Aquella sala donde pasó todo, se convirtió en un almacen, donde rara vez entraba nadie, ya que seguía produciendo sensaciones extrañas.<p>
+                <div class="options">
+                    <div class="option">
+                        <button onclick="navigate('agradecimientos')">Agradecimientos.</button>
+                    </div>
+                </div>
+            `,
+            page16H: `
+                <h1>ADKAR:Un día de pesadilla - Final</h1>
+                <p>Confrontas nuevamente a Eva con la nueva información, exigiendo respuestas. "¿Qué es todo esto?", demandas, mostrando el documento.<p>
+                <p>Eva, recuperando algo de claridad, explica que ADKAR fue diseñado para controlar la decisión de todos los empleados.<p>
+                <p>Cuando supo que iba a usar ADKAR para la sesión, aprovecharon para activarlo en la sala donde ibamos a estar, llamandolo "proyecto ADKAR".<p>
+                <p>"No podiamos permitir que la gente piense libremente, deben estar completamente alineados con lo que queremos en la dirección" Empieza a relatar Eva.<p>
+                <p>"Pero, ¡hay mejores formas de conseguirlo!"subes bastante el tono "¡cualquiera menos drogarnos para que pensemos todos igual!", "¿sabes los efectos que está teniendo en nuestras cabezas?"<p>
+                <p>"No necesitamos libre pensantes, necesitamos un ejército de personas que cumplan todo lo que se le pide, sin discutir" continua Eva,"Ese fármaco, asegura la continuidad de esta empresa durante mucho tiempo, ya que siempre van a estar de acuerdo con lo que se les diga que hagan".<p>
+                <p>"No entiendo cómo hemos llegado a esto" digo con voz rota de incredulidad.<p>
+                <p>"Lo siento" continuó Eva. "Cuando descubrí que iba a afectarnos a todos y no a un grupo concreto, me asusté, pero ya no sabía como pararlo".<p>
+                <p>"Yo te apoyaré, resolvamos esto juntos" le digo con la esperanza de que recapacite<p>
+                <p>Las revelaciones provocan un cierre inmediato del proyecto y una revisión completa de las prácticas de la empresa.<p>
+                <p>Los responsables son identificados y puestos a disposición judicial.<p>
+                <p>Como agradecimiento, la nueva dirección, te propone para que seas el nuevo responsable de estos proyectos dentro de la compañia, para asegurar que no vuelva a repetirse.<p>
+                <p>El caso nunca quedó resuelto del todo y no se identificaron a todos los responsables.<p>
+                <p>En tu caso, aceptaste ese nuevo puesto y decidiste no continuar investigando.<p>
+                <p>Una mañana, cuando te acercabas a tu puesto de trabajo, ves a lo lejos a Carlos, el cual se quedó parado observándote y dedicándote otra de sus sonrisas enigmáticas que te pone los pelos de punta.<p>
+                <p>"hay secretos, que es mejor no descubrir" piensas, mientras te das la vuelta y sigues tu camino.<p>
+                <div class="options">
+                    <div class="option">
+                        <button onclick="navigate('agradecimientos')">Agradecimientos.</button>
+                    </div>
+                </div>
+            `,
+            page16A: `
+                <h1>ADKAR:Un día de pesadilla - Final</h1>
+                <p>Decides correr hacia el parking y tratar de encontrar tu coche para salir del lugar.<p>
+                <p>Con el corazón latiendo con fuerza, corres lo más rápido que puedes. Llegas al parking y localizas tu coche. Mientras te subes y arrancas, ves a los participantes salir del edificio, pero ya estás en movimiento.<p>
+                <p>"Jajaaaa"una risa nerviosa y triunfal a la vez, te sale de la boca como una liberación.<p>
+                <p>Escapas del lugar y decides no volver jamás, mudándote a más de 500 kilómetros.<p>
+                <p>Un tiempo después, lees la noticia de la investigación sobre un proyecto ADKAR que afecta a gran parte de la compañia.<p>
+                <p>En dicha noticia, indican que han desaparecido varios empleados, entre ellos, mi antigua responsable Eva y Carlos...solo con leer este nombre, te recorre un escalofrio por el cuerpo.<p>
+                <p>Siempre te preguntas qué ocurrió realmente ese día, pero decides que hay cosas que es mejor dejar sin respuesta.<p>
+                <p>Apagas el teléfono móvil y te dispones a salir de casa, cuando las luces comienzan a parpadear, aunque no le das importancia.<p>
+                <div class="options">
+                    <div class="option">
+                        <button onclick="navigate('agradecimientos')">Agradecimientos.</button>
+                    </div>
+                </div>
+            `,
+            page16B: `
+                <h1>ADKAR:Un día de pesadilla - Final</h1>
+                <p>Decides buscar a alguien fuera del edificio para pedir ayuda y explicar la situación.<p>
+                <p>Encuentras al guardia de seguridad y le cuentas todo.Resulta que hacía unos días, había escuchado una conversación de Eva, mi responsable, pero le pareció muy extraña y no se atrevió a comentarlo con nadie.<p>
+                <p>El guardia llama a la policía, quienes llegan rápidamente y aseguran el edificio.<p>
+                <p>Con la intervención de la policía, el grupo es desmantelado y el proyecto ADKAR investigado a fondo<p>
+                <p>Se encontraron unos documentos con el nombre de "Proyecto ADKAR" el cual fue diseñado para controlar la decisión de todos los empleados.<p>
+                <p<Ese proyecto consistía en expandir a través del aire acondicionado de las salas, un fármaco, para controlar la voluntad de los empleados y acataran cualquier decisión que se tomara.<p>
+                <p>Las revelaciones de los experimentos ilegales sacuden la comunidad, y tú eres considerado un héroe por haber expuesto la verdad.<p>
+                <p>Este caso provoca la aprobación de una serie de leyes, para la vigilancia y seguridad de los empleados y evitar en un futuro que vuelva a suceder un caso similar.<p>
+                <p>Tu fama es efímera, pero te ha permitido descubrir otra vida donde se consigue dinero de manera muy rápida. Cuando pasó tu momento de gloria, decides irte a un pueblo de la costa, a llevar una vida más relajada, fuera de grandes corporaciones.<p>
+                <p>No vuelves a pensar en lo sucedido aunque, de vez en cuando, te parece volver a ver a personas con los ojos negros.<p>
+                <div class="options">
+                    <div class="option">
+                        <button onclick="navigate('agradecimientos')">Agradecimientos.</button>
+                    </div>
+                </div>
+            `,
+            page16C: `
+                <h1>ADKAR:Un día de pesadilla - Final</h1>
+                <p>Amenazas al grupo con el extintor, exigiendo que se detengan y te dejen salir.<p>
+                <p>Sorprendentemente, el grupo se detiene y retrocede. Aprovechas el momento para abrir la puerta y salir corriendo.<p>
+                <p>Logras escapar del edificio y más tarde descubres que el grupo estaba bajo algún tipo de droga.<p>
+                <p>Al parecer, descubrieron en el despacho de Eva, mi antigua responsable, unos documentos bajo el nombre de "proyecto ADKAR", donde querían controlar las decisiones de los empleados, a través de un fármaco que se expandía por el aire acondicionado.<p>
+                <p>El proyecto ADKAR es cancelado, y tú decides alejarte del mundo de la gestión del cambio, buscando una vida más tranquila.<p>
+                <p>No volviste a saber nada de tus antiguos compañeros y te mudas al norte, para no tener que volver a encender nunca un aire acondicionado.<p>
+                <div class="options">
+                    <div class="option">
+                        <button onclick="navigate('agradecimientos')">Agradecimientos.</button>
+                    </div>
+                </div>
+            `,
+            page16D: `
+                <h1>ADKAR:Un día de pesadilla - Final</h1>
+                <p>Usas el extintor directamente sobre ellos, tratando de abrirte camino hacia la puerta.<p>
+                <p>Te cuesta un montón quitar la anilla, ya que no lo has usado nunca antes "vamos,venga..." pero cuando estaban ya muy cerca, lo consigues y el polvo blanco del extintor ciega al grupo momentáneamente, permitiéndote escapar.<p>
+                <p>Escapas y denuncias el incidente. Las autoridades investigan y descubren que el proyecto ADKAR estaba vinculado a prácticas peligrosas y poco éticas.<p>
+                <p>El escándalo que sigue resulta en cambios importantes en la industria.<p>
+                <p>Tu no quieres volver a escuchar nada sobre el tema, que se encarguen los que saben, se acabó para ti la gestión del cambio.<p>
+                <p>A veces te despiertas sobresaltado, porque ves en sueños a Carlos y piensas qué habría pasado si hubieras actuado de manera diferente.<p>
+                <div class="options">
+                    <div class="option">
+                        <button onclick="navigate('agradecimientos')">Agradecimientos.</button>
+                    </div>
+                </div>
+            `,
+            page14D: `
+                <h1>ADKAR:Un día de pesadilla - Página 14D</h1>
+                <p>Decides confrontar a Carlos directamente sobre su comportamiento y comentarios inquietantes.<p>
+                <p>"Carlos", dices con firmeza, "tu comportamiento durante la sesión fue inapropiado y tus comentarios están causando inquietud. ¿Puedes explicar qué está pasando?"<p>
+                <p>Los ojos de Carlos brillan con una intensidad perturbadora. "¿Inapropiado? ¿O simplemente incómodo porque estoy señalando verdades que preferiríamos ignorar? ADKAR no es solo un modelo, es un portal hacia algo más grande."<p>
+                <p>Mientras habla, notas que las sombras en la oficina parecen moverse de manera antinatural.<p>
+                <p>¿Qué decides hacer?</p>
+                <div class="options">
+                    <div class="option">
+                        <button onclick="navigate('page15G')">1. Insistir en obtener una explicación racional de Carlos, amenazando con reportar su comportamiento si no coopera.</button>
+                    </div>
+                    <div class="option">
+                        <button onclick="navigate('page14E')">2. Escuchar más sobre lo que Carlos tiene que decir, sintiendo que podrías estar al borde de descubrir algo importante.</button>
+                    </div>
+                </div>
+            `,
+            page15G: `
+                <h1>ADKAR:Un día de pesadilla - Página 15G</h1>
+                <p>Insistes en obtener una explicación racional de Carlos, amenazando con reportar su comportamiento si no coopera.<p>
+                <p>"Carlos, esto es serio. Si no me explicas ahora mismo, voy a reportar todo esto a la dirección."<p>
+                <p>Carlos se ríe, un sonido frío y sin humor. "¿Reportarlo? No entiendes, ¿verdad? ADKAR no es solo una teoría, es una puerta. Y ya estamos cruzando el umbral."<p>
+                <p>Las sombras en la oficina se intensifican, y la sensación de irrealidad te envuelve.<p>
+                <p>¿Qué decides hacer?</p>
+                <div class="options">
+                    <div class="option">
+                        <button onclick="navigate('page16M')">1. Llamar a la seguridad del edificio para que se lleven a Carlos.</button>
+                    </div>
+                    <div class="option">
+                        <button onclick="navigate('page16B')">2. Tratar de salir de la oficina y buscar ayuda externa.</button>
+                    </div>
+                </div>
+            `,
+            page16M: `
+                <h1>ADKAR:Un día de pesadilla - Final</h1>
+                <p>Llamas a la seguridad del edificio para que se lleven a Carlos. La seguridad llega y lo retira de la oficina.<p>
+                <p>Mientras se lo llevan, Carlos se gira hacia ti con una sonrisa extraña "acabas de cruzar el umbral, amigo"<p>
+                <p>La intervención de seguridad provoca una investigación que revela las prácticas peligrosas del proyecto ADKAR.<p>
+                <p>La empresa realiza una limpieza interna y tú decides continuar tu carrera con una nueva perspectiva sobre la ética profesional.<p>
+                <p>Cada cierto tiempo, vuelven a tu mente esas últimas palabras de Carlos, aunque no quieres saber nada más de tu antigua compañía y piensas que ya no te afecta de todas formas.<p>
+                <p>En la nueva empresa, las cosas funcionan siempre bien, como si todos estuvieramos siempre de acuerdo con las decisiones que se toman...<p>
+                <div class="options">
+                    <div class="option">
+                        <button onclick="navigate('agradecimientos')">Agradecimientos.</button>
+                    </div>
+                </div>
+            `,
+            page15H: `
+                <h1>ADKAR:Un día de pesadilla - Página 15H</h1>
+                <p>Decides tomar la mano de Carlos, sintiendo que estás al borde de un descubrimiento trascendental.<p>
+                <p>Su mano es fría al tacto, y un escalofrío recorre tu cuerpo. De repente, la habitación parece disolverse a tu alrededor.<p>
+                <p>Te encuentras en un lugar oscuro y vasto, lleno de sombras que parecen moverse con vida propia.<p>
+                <p>Carlos está a tu lado, su rostro iluminado por una luz tenue y extraña. "Bienvenido al verdadero cambio," dice. "Aquí es donde comienza la transformación."<p>
+                <p>¿Qué decides hacer?</p>
+                <div class="options">
+                    <div class="option">
+                        <button onclick="navigate('page16O')">1. Explorar este nuevo lugar, siguiendo a Carlos.</button>
+                    </div>
+                    <div class="option">
+                        <button onclick="navigate('page16P')">2. Buscar una manera de regresar, sintiendo que esto es demasiado peligroso.</button>
+                    </div>
+                </div>
+            `,
+            page16O: `
+                <h1>ADKAR:Un día de pesadilla - Final</h1>
+                <p>Exploras este nuevo lugar, siguiendo a Carlos. A medida que avanzas, ves cosas que desafían toda lógica y comprensión.<p>
+                <p>Carlos te guía a través de un viaje surrealista. Aunque el conocimiento que adquieres es increíble, te das cuenta de que hay un precio muy alto a pagar.<p>
+                <p>Decides regresar a tu realidad, sabiendo que algunos misterios deben permanecer sin resolver.<p>
+                <div class="options">
+                    <div class="option">
+                        <button onclick="navigate('agradecimientos')">Agradecimientos.</button>
+                    </div>
+                </div>
+            `,
+            page16P: `
+                <h1>ADKAR:Un día de pesadilla - Final</h1>
+                <p>Buscas una manera de regresar, sintiendo que esto es demasiado peligroso. Desesperadamente, intentas encontrar una salida.<p>
+                <p>Tratas de recordar la posición en la que estabas en la sala de verdad y con movimientos mucho más lentos de los que esperabas, logras llegar a la ventana y abrirla.<p>
+                <p>Eso hace que salgas del lugar oscuro y vasto y finalmente, logras regresar a tu realidad, aunque marcado por la experiencia vivida.<p>
+                <p>Decides que nunca más te involucrarás en algo tan arriesgado y te enfocas en una vida más segura y sencilla.<p>
+                <p>Algunas noches te parece escuchar un susurro "¿No quieres conocer la verdad?".<p>
+                <div class="options">
+                    <div class="option">
+                        <button onclick="navigate('agradecimientos')">Agradecimientos.</button>
+                    </div>
+                </div>
+            `,
+            // poner enlace después de todos los finales
+            agradecimientos: `
+                <h1>ADKAR:Un día de pesadilla - Agradecimientos finales</h1> 
+                <p>¡MUCHAS GRACIAS por haber llegado hasta aqui!<p>
+                <p>Espero que te haya resultado entretenida, esta primera locura que surgió de mi cabeza y que nunca me hubiera atrevido a crear sin ayuda.<p>
+                <p>Y Esto es raro, pero tengo que dar las gracias a una Inteligencia Artificial como Claude, que es la que me ha suministrado la mayor parte del texto y la cual recomiendo que probéis más, os va a sorprender.<p>
+                <p>La idea de historias entrelazadas y que pudieras elegir el camino, he querido hacerlo para recordar mis libros de aventuras de la infancia de "elige tu propia aventura" que me encantaban.<p>
+                <p>Y todo partió de pensar una dinámica de facilitación de un equipo sobre la gestión del cambio y cómo les afecta en su vida...y fijaos en lo que ha terminado.<p>
+                <p>No ha sido tan fácil, porque iba pidiendo que fuera creando cada árbol de decisión y que parara para que yo lo revisara (recomiendo siempre revisar contenido generado por IA) y acabé con la parte gratuita.<p>
+                <p>Por ese motivo, gracias también a mi media langosta porque, aunque ayudado por la IA, le he tenido que echar unas cuantas horas para el montaje final, porque habia historias que no seguían un camino correcto y lo hice manualmente.<p>
+                <p>También los finales han sido cosecha propia, tratando de ofrecer distintas alternativas,pero venga...digamos que 60%-40% de trabajo repartido?.<p>
+                <p>Obvio que no soy escritor y seguro que hay muchas cosas que mejorar, si quieres realizarme alguna propuesta, encantado de escucharte.<p>
+                <p>Los nombres son ficticios y cualquier parecido con la realidad, es simple coincidencia.<p>
+                <p>Pero la elección sigue siendo tuya...has llegado hasta aquí por uno de los finales, pero podrías ver otros caminos de la historia...<p>
+                <p>¿qué decides hacer...?jeje
+                <div class="options">
+                    <div class="option">
+                        <button onclick="navigate('page1')">Volver a leer.</button>
+                    </div>
+                </div>
+            `,
+            // Continúa añadiendo más páginas aquí según sea necesario
+        };
+
+        // Función para navegar entre páginas
+        function navigate(page) {
+            document.getElementById('content').innerHTML = pages[page];
+        }
+
+        // Cargar la primera página al iniciar
+        navigate('page1');
+        // empezar por titulo
+        function startNovel() {
+            document.getElementById('cover').style.display = 'none';
+            document.getElementById('content').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
